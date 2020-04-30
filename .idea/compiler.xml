@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="el-demo" />
+        <module name="redis-demo" />
+        <module name="thread-demo" />
+        <module name="springboot" />
+        <module name="baitsplus-demo" />
+        <module name="flowable-demo" />
+        <module name="flowable" />
+        <module name="kafka-demo" />
+        <module name="swagger-demo" />
+        <module name="rocketmq-demo" />
+        <module name="shiro-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="baitsplus-demo" target="1.8" />
+      <module name="el-demo" target="1.8" />
+      <module name="flowable" target="1.8" />
+      <module name="flowable-demo" target="1.8" />
+      <module name="kafka-demo" target="1.8" />
+      <module name="redis-demo" target="1.8" />
+      <module name="rocketmq-demo" target="1.8" />
+      <module name="shiro-demo" target="1.8" />
+      <module name="springboot" target="1.8" />
+      <module name="swagger-demo" target="1.8" />
+      <module name="thread-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="baitsplus-demo" options="-parameters" />
+      <module name="el-demo" options="-parameters" />
+      <module name="flowable" options="-parameters" />
+      <module name="flowable-demo" options="-parameters" />
+      <module name="kafka-demo" options="-parameters" />
+      <module name="redis-demo" options="-parameters" />
+      <module name="rocketmq-demo" options="-parameters" />
+      <module name="shiro-demo" options="-parameters" />
+      <module name="springboot" options="-parameters" />
+      <module name="swagger-demo" options="-parameters" />
+      <module name="thread-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

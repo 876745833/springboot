@@ -1,0 +1,18 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    # 通用名字,其他环境可以覆盖：为你的应用起个名字，该名字将注册到eureka注册中心
+    name: ebs-flowable
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/boot_flowable?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Hongkong&allowMultiQueries=true
+    username: root
+    password: admin
+
+# flowable 配置
+flowable:
+  # 关闭异步，不关闭历史数据的插入就是异步的，会在同一个事物里面，无法回滚
+  # 开发可开启会提高些效率，上线需要关闭
+  async-executor-activate: false
