@@ -67,7 +67,7 @@ public class BihuAuthorityAreaController {
     /**
      * 分页查询
      */
-    @GetMapping("/area")
+    @GetMapping("/areaPage")
     public void selectPageLoads(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum,
                                 @RequestParam(name = "pageSize", required = false, defaultValue = "15") int pageSize,
                                 @RequestParam(name = "data",required = false) BihuAuthorityArea  data){
