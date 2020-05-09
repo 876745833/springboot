@@ -1,9 +1,7 @@
 package com.crc.swaggerdemo.controller;
 
 import io.swagger.annotations.*;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author CRC
