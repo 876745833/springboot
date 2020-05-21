@@ -73,9 +73,7 @@ public class BihuAuthorityAreaController {
                                 @RequestParam(name = "data",required = false) BihuAuthorityArea  data){
         Page<BihuAuthorityArea> page = new Page<>(pageNum,pageSize);
         QueryWrapper<BihuAuthorityArea> wrapper = new QueryWrapper<>();
-        wrapper.eq("name",data.getName())
-                .eq("grade",data.getGrade())
-                .eq("code",data.getCode());
+        wrapper.lambda().eq(BihuAuthorityArea::getParentId,data.getParentId());
         IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, null);
         List<BihuAuthorityArea> records = lstUser.getRecords();
         for (BihuAuthorityArea record : records) {

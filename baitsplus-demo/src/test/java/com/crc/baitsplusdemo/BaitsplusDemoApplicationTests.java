@@ -1,5 +1,6 @@
 package com.crc.baitsplusdemo;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.crc.baitsplusdemo.entity.BihuAuthorityArea;
@@ -31,7 +32,9 @@ class BaitsplusDemoApplicationTests {
     @Test
     public void selectPageLoads() {
         Page<BihuAuthorityArea> page = new Page<>(1,5);
-        IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, null);
+        QueryWrapper<BihuAuthorityArea> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(BihuAuthorityArea::getParentId,"110100");
+        IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, wrapper);
         List<BihuAuthorityArea> records = lstUser.getRecords();
         for (BihuAuthorityArea record : records) {
             System.out.println(record);
