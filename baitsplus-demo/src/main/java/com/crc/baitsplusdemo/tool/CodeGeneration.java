@@ -2,11 +2,12 @@ package com.crc.baitsplusdemo.tool;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CodeGeneration {
 
@@ -31,20 +32,43 @@ public class CodeGeneration {
         gc.setXmlName("%sMapper");
         mpg.setGlobalConfig(gc);
 
+        // 自定义配置
+        InjectionConfig cfg = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                // to do nothing
+            }
+        };
+        // 如果模板引擎是 freemarker
+        //String templatePath = "/templates/mapper.xml.ftl";
+        // 自定义输出配置
+        List<FileOutConfig> focList = new ArrayList<>();
+        // 自定义配置会被优先输出
+//        focList.add(new FileOutConfig(templatePath) {
+//            @Override
+//            public String outputFile(TableInfo tableInfo) {
+//                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+//                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+//                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+//            }
+//        });
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);
+
         //数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("bhhb@Mysql123");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/ebs?serverTimezone=GMT%2B8");
+        dsc.setPassword("admin");
+        dsc.setUrl("jdbc:mysql://localhost:3306/pachong?serverTimezone=GMT%2B8");
         mpg.setDataSource(dsc);
 
         //策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[]{"ebs_"});//此处可以修改您的表前缀
+        strategy.setTablePrefix(new String[]{""});//此处可以修改您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);//表名生成策略
-        strategy.setInclude(new String[]{"bihu_authority_area"});//需要生成的表
+        strategy.setInclude(new String[]{"movie"});//需要生成的表
 
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
@@ -54,7 +78,7 @@ public class CodeGeneration {
 
         //包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.crc.baitsplusdemo");
+        pc.setParent("com.bihu.ebs.workorder");
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");

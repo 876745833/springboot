@@ -68,17 +68,15 @@ public class BihuAuthorityAreaController {
      * 分页查询
      */
     @GetMapping("/areaPage")
-    public void selectPageLoads(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum,
+    public List<BihuAuthorityArea> selectPageLoads(@RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum,
                                 @RequestParam(name = "pageSize", required = false, defaultValue = "15") int pageSize,
                                 @RequestParam(name = "data",required = false) BihuAuthorityArea  data){
         Page<BihuAuthorityArea> page = new Page<>(pageNum,pageSize);
         QueryWrapper<BihuAuthorityArea> wrapper = new QueryWrapper<>();
         wrapper.lambda().eq(BihuAuthorityArea::getParentId,data.getParentId());
-        IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, null);
+        IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, wrapper);
         List<BihuAuthorityArea> records = lstUser.getRecords();
-        for (BihuAuthorityArea record : records) {
-            System.out.println(record);
-        }
+        return records;
     }
 
 }
