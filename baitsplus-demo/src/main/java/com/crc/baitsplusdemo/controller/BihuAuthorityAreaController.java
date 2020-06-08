@@ -21,7 +21,7 @@ import java.util.List;
  * @author crc
  * @since 2020-04-24
  */
-@Controller
+@RestController
 @RequestMapping("/bihuAuthorityArea")
 public class BihuAuthorityAreaController {
     @Resource
@@ -34,8 +34,7 @@ public class BihuAuthorityAreaController {
      * @param id
      * @return
      */
-    @GetMapping("/{id}")
-    @ResponseBody
+    @GetMapping("/id/{id}")
     public BihuAuthorityArea getMes(@PathVariable Long id){
         BihuAuthorityArea bihuAuthorityArea = this.service.getById(id);
         return bihuAuthorityArea;
@@ -46,7 +45,6 @@ public class BihuAuthorityAreaController {
      * @return
      */
     @GetMapping("/area")
-    @ResponseBody
     public List<BihuAuthorityArea> getAll2(){
         List<BihuAuthorityArea> list = service.list();
         return list;
@@ -57,8 +55,8 @@ public class BihuAuthorityAreaController {
      * @param name
      * @return
      */
-    @GetMapping("/{name}")
-    public BihuAuthorityArea getByName(@PathVariable String name){
+    @GetMapping("/name")
+    public BihuAuthorityArea getByName(@RequestParam(name = "name")String name){
         QueryWrapper<BihuAuthorityArea> wrapper = new QueryWrapper<>();
         wrapper.eq("name",name);
         return  this.service.getOne(wrapper);
@@ -73,7 +71,7 @@ public class BihuAuthorityAreaController {
                                 @RequestParam(name = "data",required = false) BihuAuthorityArea  data){
         Page<BihuAuthorityArea> page = new Page<>(pageNum,pageSize);
         QueryWrapper<BihuAuthorityArea> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(BihuAuthorityArea::getParentId,data.getParentId());
+//        wrapper.lambda().eq(BihuAuthorityArea::getParentId,data.getParentId());
         IPage<BihuAuthorityArea> lstUser = mapper.selectPage(page, wrapper);
         List<BihuAuthorityArea> records = lstUser.getRecords();
         return records;
