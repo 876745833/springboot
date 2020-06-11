@@ -1,8 +1,6 @@
 package com.crc.redisdemo;
 
 import com.crc.redisdemo.pojo.UserVo;
-import com.crc.redisdemo.redis.RedisKeyUtil;
-import com.crc.redisdemo.redis.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

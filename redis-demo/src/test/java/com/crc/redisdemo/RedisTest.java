@@ -1,6 +1,5 @@
 package com.crc.redisdemo;
 
-import com.crc.redisdemo.redis.RedisService;
 import com.crc.redisdemo.redis.RedisUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
