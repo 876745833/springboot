@@ -5,6 +5,7 @@
     部署docker
     
     master
+    test
 测试：
     
     BihuAuthorityAreaController：
